@@ -2,7 +2,7 @@
   <div id="app">
     <img src="./assets/logo.png">
     <br/>
-    abc
+    <h3>施(撒)工(懒)中</h3>
     <router-view></router-view>
   </div>
 </template>
