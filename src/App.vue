@@ -1,7 +1,6 @@
 <template>
   <div>
-    <MovieBar></MovieBar>
-    <MovieTab></MovieTab>
+  <Home></Home>
     <div id="app">
       <img src="./assets/logo.png">
       <br/>
@@ -12,16 +11,14 @@
 </template>
 
 <script>
-  import MovieBar from './components/Movie/Bar';
-  import MovieTab from './components/Movie/Tab';
+import Home from './components/Home';
 
-  export default {
-    name: 'app',
-    components: {
-      MovieTab,
-      MovieBar,
-    },
-  };
+export default {
+  name: 'app',
+  components: {
+    Home,
+  },
+};
 
 </script>
 
