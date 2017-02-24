@@ -39,7 +39,8 @@ module.exports = {
         enforce: "pre",
         include: [resolve('src'), resolve('test')],
         options: {
-          formatter: require('eslint-friendly-formatter')
+          formatter: require('eslint-friendly-formatter'),
+          fix: true
         }
       },
       {
