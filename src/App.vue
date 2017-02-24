@@ -2,9 +2,6 @@
   <div>
   <Home></Home>
     <div id="app">
-      <img src="./assets/logo.png">
-      <br/>
-      <h3>施(撒)工(懒)中</h3>
       <router-view></router-view>
     </div>
   </div>
