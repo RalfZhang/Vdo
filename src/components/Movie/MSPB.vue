@@ -1,12 +1,23 @@
 <template>
   <div class='wrap'>
-    <mu-row>
-      <mu-col class='paper-elem' width="30" tablet="25" desktop="20" v-for="subject in subjects">
+    <mu-row class='paper-row'>
+      <mu-col class='paper-elem' width="33" tablet="25" desktop="20" v-for="subject in subjects">
         <mu-paper>
-          <img class='paper-img' v-bind:src="subject.images.large" />
+          <div class='paper-border'>          
+            <div class='paper-img' :style="'background-image: url('+subject.images.large+')'">
+            </div>
+          </div>
           <div class='paper-text'>
-            <p>{{ subject.title}}</p>
-            <p>****</p>
+            <p> {{subject.title}} </p>
+            <p>
+              <span class="paper-star">
+                <mu-icon class='star-icon' value="star" v-for="n in ratingStar(subject.rating.average).star"/>
+                <mu-icon class='star-icon' value="star_half" v-for="n in ratingStar(subject.rating.average).half"/>
+                <mu-icon class='star-icon' value="star_border" v-for="n in ratingStar(subject.rating.average).left"/>
+              </span>
+
+             <span class='paper-rating'>{{new Number(subject.rating.average).toFixed(1)}} <span>
+             </p>
           </div>
         </mu-paper>
       </mu-col>
@@ -1196,9 +1207,22 @@
   console.log(data);
 
   export default {
-    name: 'movielist',
+    name: 'movieList',
     data() {
       return data;
+    },
+    methods: {
+      ratingStar(item) {
+        const intNum = Math.round(item);
+        const star = Math.floor(intNum / 2);
+        const half = intNum % 2;
+        const left = 5 - star - half;
+        return {
+          star,
+          half,
+          left,
+        };
+      },
     },
   };
 </script>
@@ -1206,23 +1230,59 @@
 .wrap{
   padding: 10px;
 }
-.paper-elem{
-  margin: 10px 5px;
+.wrap>.paper-row{
+  justify-content: flex-start;
+  flex-flow: row wrap;
 }
-  .paper-img{
-    width: 100%;
-    height: 141%;
-    padding:2px;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  .paper-text>p{
-    margin: 0;
-    padding: 0;
-    height: 20px;
-    line-height: 20px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
+.paper-elem{
+  padding: 10px;
+}
+.paper-border{
+  position: relative;
+  border-radius: 2px 2px 0 0;
+  overflow: hidden;
+}
+.paper-img{
+  position: relative;
+  width: 100%;
+  padding-top:141%;
+  background-size: cover;
+  -moz-background-size: cover;
+}
+.paper-img-wrap{
+  top:0;
+  left: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 2px 2px 0px 0px;
+  box-sizing: border-box;
+}
+.paper-img-wrap>img{
+  width: 100%;
+}
+.paper-text{
+  padding-top: 1vw;
+}
+.paper-text>p{
+  margin: 0;
+  padding: 0 1vw;
+  font-size: 2vw;
+  height: 3vw+4px;
+  line-height: 3vw+4px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.star-icon{
+  font-size: 2vw;
+  margin-right: -4px;
+}
+.paper-star{
+  margin-right: 4px;
+}
+.paper-rating{
+  position: relative;
+  top: -1px;
+}
 </style>

@@ -9,11 +9,13 @@
 
 <script>
 import Home from './components/Home';
+import Detail from './components/Movie/Detail';
 
 export default {
   name: 'app',
   components: {
     Home,
+    Detail,
   },
 };
 
