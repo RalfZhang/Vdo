@@ -3,7 +3,7 @@
     <mu-row class='paper-row'>
       <mu-col class='paper-elem' width="33" tablet="25" desktop="20" v-for="subject in subjects">
         <mu-paper>
-          <div class='paper-border'>          
+          <div class='paper-border'>
             <div class='paper-img' :style="'background-image: url('+subject.images.large+')'">
             </div>
           </div>
@@ -16,7 +16,7 @@
                 <mu-icon class='star-icon' value="star_border" v-for="n in ratingStar(subject.rating.average).left"/>
               </span>
 
-             <span class='paper-rating'>{{new Number(subject.rating.average).toFixed(1)}} <span>
+              <span class='paper-rating'>{{new Number(subject.rating.average).toFixed(1)}} <span>
              </p>
           </div>
         </mu-paper>
@@ -1262,27 +1262,28 @@
   width: 100%;
 }
 .paper-text{
-  padding-top: 1vw;
+  padding-top: 6px;
 }
 .paper-text>p{
   margin: 0;
-  padding: 0 1vw;
-  font-size: 2vw;
-  height: 3vw+4px;
-  line-height: 3vw+4px;
+  padding: 0 4px;
+  font-size: 14px;
+  height: 20px;
+  line-height: 20px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
 .star-icon{
-  font-size: 2vw;
+  font-size: 14px;
   margin-right: -4px;
+  float: left;
 }
 .paper-star{
   margin-right: 4px;
 }
 .paper-rating{
   position: relative;
-  top: -1px;
+  top: -2px;
 }
 </style>

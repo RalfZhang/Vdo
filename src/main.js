@@ -11,6 +11,7 @@ import router from './router';
 
 
 Vue.use(MuseUI);
+Vue.filter('arr2string', value => value.join(' / '));
 
 /* eslint-disable no-new */
 new Vue({

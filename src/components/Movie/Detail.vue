@@ -1,5 +1,74 @@
 <template>
-<div>13</div>
+<div style="position: relative">
+
+  <mu-icon-button class='icon-back' icon='arrow_back' slot="left"/>
+  <div class="image-wrap" :style="'background-image: url('+images.large+')'">
+  </div>
+  <div class="title-border">
+    <div class="title-info">
+      <div class="title-image">
+        <img :src='images.large'/>
+      </div>
+      <div class="title-text">
+        <p>{{title}}</p>
+        <p>{{rating.average}}</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="star">
+    <mu-icon class='star-icon' :size='36' value="star" v-for="n in ratingStar(rating.average).star"/>
+    <mu-icon class='star-icon' :size='36' value="star_half" v-for="n in ratingStar(rating.average).half"/>
+    <mu-icon class='star-icon' :size='36' value="star_border" v-for="n in ratingStar(rating.average).left"/>
+  </div>
+  <div class="info">
+    <p class="info-content"><span class="info-title">原名</span><span class="info-text">{{original_title}}</span></p>
+    <p class="info-content"><span class="info-title">类型</span><span class="info-text">{{genres | arr2string}}</span></p>
+    <p class="info-content"><span class="info-title">年代</span><span class="info-text">{{year}}</span></p>
+    <p class="info-content"><span class="info-title">地区</span><span class="info-text">{{countries | arr2string}}</span></p>
+    <p class="info-content"><span class="info-title">又名</span><span class="info-text">{{aka | arr2string}}</span></p>
+    <p class="info-content"><span class="info-title">想看人数</span><span class="info-text">{{wish_count}}</span></p>
+    <p class="info-content"><span class="info-title">看过人数</span><span class="info-text">{{collect_count}}</span></p>
+    <p class="info-content"><span class="info-title">评分人数</span><span class="info-text">{{ratings_count}}</span></p>
+    <p class="info-content"><span class="info-title">短评数量</span><span class="info-text">{{comments_count}}</span></p>
+    <p class="info-content"><span class="info-title">影评数量</span><span class="info-text">{{reviews_count}}</span></p>
+  </div>
+  <div class="summary">{{summary}}</div>
+  <div class="author">
+    <p class="author-type">导演</p>
+    <mu-row>
+      <mu-col class='author-elem' width="50" tablet="33" desktop="25" v-for="subject in directors">
+        <mu-paper>
+          <div class='author-wrap'>          
+            <div class="author-image">
+              <div class='author-padding' :style="'background-image: url('+subject.avatars.large+')'"></div>
+            </div>
+            <div class="author-name">{{subject.name}}</div>
+          </div>
+        </mu-paper>
+      </mu-col>
+
+    </mu-row>
+  </div>
+  <div class="author">
+    <p class="author-type">主演</p>
+    <mu-row>
+      <mu-col class='author-elem' width="50" tablet="33" desktop="25" v-for="subject in casts">
+        <mu-paper>
+          <div class='author-wrap'>          
+            <div class="author-image">
+              <div class='author-padding' :style="'background-image: url('+subject.avatars.large+')'"></div>
+            </div>
+            <div class="author-name">{{subject.name}}</div>
+          </div>
+        </mu-paper>
+      </mu-col>
+
+    </mu-row>
+  </div>
+  
+
+</div>
 </template>
 
 
@@ -113,9 +182,118 @@
       data() {
         return data;
       },
+      methods: {
+        ratingStar(item) {
+          const intNum = Math.round(item);
+          const star = Math.floor(intNum / 2);
+          const half = intNum % 2;
+          const left = 5 - star - half;
+          return {
+            star,
+            half,
+            left,
+          };
+        },
+      },
     };
 
 </script>
-<style lang="css">
+<style lang="css" scoped>
+.image-wrap{
+  width: 100%;
+  padding-top: 80%;
+  background: #fff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -moz-background-size: cover;
+  overflow: hidden;
+}
+.icon-back{
+  position: absolute;
+  top: 0;
+  color: #fff;
+  text-shadow: 0px 0px 3px #ddd;
+}
+.title-border{
+  padding: 20px;
+  box-shadow: 0 0px 15px 5px #ccc;
+}
+.title-info{
+  position: relative;
+}
+.title-image{
+  width: 30%;
+  position: absolute;
+  bottom: 0;
+}
+.title-image>img{
+  width: 100%;
+  display: block;
+}
+.title-text{
+  position: relative;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 4px 0 4px 30%;
+}
+.title-text>p{
+  padding-left: 15px;
+  margin: 0;
+}
+.star{
+  display: flex;
+  justify-content: center;
+  background: #eee;
+}
+.star-icon{
+  margin: 20px 0;
+  color: #ff6f00;
+}
+.info{
+  margin: 30px;
+}
+.info-content>span{
+  display: block;
+}
+.info-text{
+  color: #888;
+}
+.summary{
+  padding: 30px 20px;
+  background: #eee;
+}
+.author{
+  margin: 25px;
+}
+.author-type{
+  padding: 0px 5px;
+  margin: 0;
+}
+.author-elem{
+  padding:5px;
+}
+.author-wrap{
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+.author-image{
+  float: left;
+  width: 50%;
+  border-radius: 2px  0 0 2px;
+  overflow: hidden;
+}
+.author-padding{
+  width: 100%;
+  padding-top: 141%;
+  background-size: cover;
+  -moz-background-size: cover;
+}
+.author-name{ 
+  float: left;
+  width: 50%;
+  padding: 10px 6px;
+}
+
     
 </style>
