@@ -11,10 +11,10 @@
 			</mu-tabs>
 		</mu-paper>
 		<div v-if="activeTab === 'tab1'">
-			<Card></Card>
+			<Card type='in_theaters'></Card>
 		</div>
 		<div v-if="activeTab === 'tab2'">
-			<Card></Card>
+			<Card type='coming_soon'></Card>
 		</div>
 	</div>
 </template>

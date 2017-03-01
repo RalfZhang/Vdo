@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
+    "axios": "^0.15.3",
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.10",
@@ -60,6 +61,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "0.0.26",
     "karma-webpack": "^2.0.2",
+    "keycode": "^2.1.7",
     "less": "^2.7.2",
     "less-loader": "^2.2.3",
     "lolex": "^1.5.2",
