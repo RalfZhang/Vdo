@@ -2,14 +2,14 @@
   <div>
     <div id="app">
       <router-view></router-view>
-      <Footer></Footer>
+      <Copyright></Copyright>
     </div>
   </div>
 </template>
 
 <script>
 import Home from './components/Home';
-import Footer from './components/Footer';
+import Copyright from './components/Copyright';
 import Detail from './components/Movie/Detail';
 
 export default {
@@ -17,7 +17,7 @@ export default {
   components: {
     Home,
     Detail,
-    Footer,
+    Copyright,
   },
 };
 

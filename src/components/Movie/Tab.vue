@@ -4,6 +4,7 @@
     <mu-paper :zDepth="2">
       <mu-appbar title='豆瓣电影'>
         <mu-icon-button icon='menu' slot="left" />
+        <mu-icon-button icon='search' slot='right' />
       </mu-appbar>
       <mu-tabs :value="activeTab" @change="handleTabChange">
         <mu-tab value="tab1" title="正在热映" />

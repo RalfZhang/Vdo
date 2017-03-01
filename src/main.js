@@ -12,6 +12,7 @@ import router from './router';
 
 Vue.use(MuseUI);
 Vue.filter('arr2string', value => value.join(' / '));
+Vue.filter('fixNum', num => (num ? (Number(num).toFixed(1)) : '暂无评分'));
 
 /* eslint-disable no-new */
 new Vue({
