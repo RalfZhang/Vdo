@@ -15,19 +15,24 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/movie/subject/',
-      name: 'MovieDetail',
-      component: Detail,
-    },
-    {
       path: '/test/',
       name: 'test',
       component: Test,
     },
     {
+      path: '/movie/subject/',
+      name: 'MovieDetail',
+      component: Detail,
+    },
+    {
       path: '/movie/search/',
       name: 'MovieSearch',
       component: MovieSearch,
+    },
+    {
+      path: '/',
+      name: 'Home',
+      component: Home,
     },
   ],
 });
