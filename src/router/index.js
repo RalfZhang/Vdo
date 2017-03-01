@@ -1,38 +1,48 @@
 import Vue from 'vue';
-import Router from 'vue-router';
+import VueRouter from 'vue-router';
+
 import Home from 'components/Home';
-import Detail from 'components/Movie/Detail';
+import Movie from 'components/Movie';
+import MovieTab from 'components/Movie/Tab';
+import MovieSubject from 'components/Movie/Subject';
 import MovieSearch from 'components/Movie/Search';
-import Test from 'components/Test';
+// import Test from 'components/Test';
 
-Vue.use(Router);
+Vue.use(VueRouter);
 
-export default new Router({
+
+export default new VueRouter({
   routes: [
     {
-      path: '/home/',
-      name: 'Home',
-      component: Home,
-    },
-    {
-      path: '/test/',
-      name: 'test',
-      component: Test,
-    },
-    {
-      path: '/movie/subject/',
-      name: 'MovieDetail',
-      component: Detail,
-    },
-    {
-      path: '/movie/search/',
-      name: 'MovieSearch',
-      component: MovieSearch,
-    },
-    {
       path: '/',
+      redirect: '/movie',
       name: 'Home',
       component: Home,
+      children: [
+        {
+          path: 'movie',
+          redirect: 'movie/home',
+          name: 'Movie',
+          component: Movie,
+          children: [
+            {
+              path: 'home',
+              name: 'MovieHome',
+              component: MovieTab,
+            },
+            {
+              path: 'subject/:id',
+              name: 'MovieSubject',
+              component: MovieSubject,
+            },
+            {
+              path: 'search',
+              name: 'MovieSearch',
+              component: MovieSearch,
+            },
+          ],
+        },
+      ],
     },
   ],
 });
