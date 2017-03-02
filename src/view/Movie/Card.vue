@@ -2,7 +2,7 @@
   <div class='wrap'>
     <mu-row class='paper-row'>
       <mu-col class='paper-elem' width="33" tablet="25" desktop="20" v-for="subject in subjects">
-        <router-link :to="{name: 'MovieSubject', params:{id: '223'}}">
+        <router-link :to="{name: 'MovieSubject', params:{id: subject.id}}">
           <mu-paper>
             <div class='paper-border'>
               <div class='paper-img' :style="'background-image: url('+subject.images.large+')'">

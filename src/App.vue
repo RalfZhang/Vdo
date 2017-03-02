@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import Home from './components/Home';
-import Copyright from './components/Copyright';
+import Home from './view/Home';
+import Copyright from './view/Copyright';
 
 export default {
   name: 'app',

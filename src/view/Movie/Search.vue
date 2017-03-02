@@ -184,6 +184,9 @@ export default {
   data() {
     return data;
   },
+  mounted() {
+    console.log(`mmmmmm-------${Math.random()}`);
+  },
   methods: {
     ratingStar(item) {
       const intNum = Math.round(item);

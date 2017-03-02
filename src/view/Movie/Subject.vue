@@ -1,42 +1,42 @@
 <template>
   <div style="position: relative">
     <mu-icon-button class='icon-back' icon='arrow_back' slot="left" @click='goBack()' />
-    <div class="image-wrap" :style="'background-image: url('+images.large+')'">
+    <div class="image-wrap" :style="'background-image: url('+movie.images.large+')'">
     </div>
     <div class="title-border">
       <div class="title-info">
         <div class="title-image">
-          <img :src='images.large' />
+          <img :src='movie.images.large' />
         </div>
         <div class="title-text">
-          <p>{{title}}</p>
-          <p>{{rating.average}}</p>
+          <p>{{movie.title}}</p>
+          <p>{{movie.rating.average}}</p>
         </div>
       </div>
     </div>
 
     <div class="star">
-      <mu-icon class='star-icon' :size='36' value="star" v-for="n in ratingStar(rating.average).star" />
-      <mu-icon class='star-icon' :size='36' value="star_half" v-for="n in ratingStar(rating.average).half" />
-      <mu-icon class='star-icon' :size='36' value="star_border" v-for="n in ratingStar(rating.average).left" />
+      <mu-icon class='star-icon' :size='36' value="star" v-for="n in ratingStar(movie.rating.average).star" />
+      <mu-icon class='star-icon' :size='36' value="star_half" v-for="n in ratingStar(movie.rating.average).half" />
+      <mu-icon class='star-icon' :size='36' value="star_border" v-for="n in ratingStar(movie.rating.average).left" />
     </div>
     <div class="info">
-      <p class="info-content"><span class="info-title">原名</span><span class="info-text">{{original_title}}</span></p>
-      <p class="info-content"><span class="info-title">类型</span><span class="info-text">{{genres | arr2string}}</span></p>
-      <p class="info-content"><span class="info-title">年代</span><span class="info-text">{{year}}</span></p>
-      <p class="info-content"><span class="info-title">地区</span><span class="info-text">{{countries | arr2string}}</span></p>
-      <p class="info-content"><span class="info-title">又名</span><span class="info-text">{{aka | arr2string}}</span></p>
-      <p class="info-content"><span class="info-title">想看人数</span><span class="info-text">{{wish_count}}</span></p>
-      <p class="info-content"><span class="info-title">看过人数</span><span class="info-text">{{collect_count}}</span></p>
-      <p class="info-content"><span class="info-title">评分人数</span><span class="info-text">{{ratings_count}}</span></p>
-      <p class="info-content"><span class="info-title">短评数量</span><span class="info-text">{{comments_count}}</span></p>
-      <p class="info-content"><span class="info-title">影评数量</span><span class="info-text">{{reviews_count}}</span></p>
+      <p class="info-content"><span class="info-title">原名</span><span class="info-text">{{movie.original_title}}</span></p>
+      <p class="info-content"><span class="info-title">类型</span><span class="info-text">{{movie.genres | arr2string}}</span></p>
+      <p class="info-content"><span class="info-title">年代</span><span class="info-text">{{movie.year}}</span></p>
+      <p class="info-content"><span class="info-title">地区</span><span class="info-text">{{movie.countries | arr2string}}</span></p>
+      <p class="info-content"><span class="info-title">又名</span><span class="info-text">{{movie.aka | arr2string}}</span></p>
+      <p class="info-content"><span class="info-title">想看人数</span><span class="info-text">{{movie.wish_count}}</span></p>
+      <p class="info-content"><span class="info-title">看过人数</span><span class="info-text">{{movie.collect_count}}</span></p>
+      <p class="info-content"><span class="info-title">评分人数</span><span class="info-text">{{movie.ratings_count}}</span></p>
+      <p class="info-content"><span class="info-title">短评数量</span><span class="info-text">{{movie.comments_count}}</span></p>
+      <p class="info-content"><span class="info-title">影评数量</span><span class="info-text">{{movie.reviews_count}}</span></p>
     </div>
-    <div class="summary">{{summary}}</div>
+    <div class="summary">{{movie.summary}}</div>
     <div class="author">
       <p class="author-type">导演</p>
       <mu-row>
-        <mu-col class='author-elem' width="50" tablet="33" desktop="25" v-for="subject in directors">
+        <mu-col class='author-elem' width="50" tablet="33" desktop="25" v-for="subject in movie.directors">
           <mu-paper>
             <div class='author-wrap'>
               <div class="author-image">
@@ -52,7 +52,7 @@
     <div class="author">
       <p class="author-type">主演</p>
       <mu-row>
-        <mu-col class='author-elem' width="50" tablet="33" desktop="25" v-for="subject in casts">
+        <mu-col class='author-elem' width="50" tablet="33" desktop="25" v-for="subject in movie.casts">
           <mu-paper>
             <div class='author-wrap'>
               <div class="author-image">
@@ -74,6 +74,7 @@
 <script>
 
   import router from './../../router';
+  import { fetchMovieSubject } from './../../store/movies/api';
 
   const data =
     {
@@ -181,7 +182,17 @@
   export default {
     name: 'movieSubject',
     data() {
-      return data;
+      return { movie: data };
+    },
+    watch: {
+      $route(to) {
+        console.log(to);
+        this.setPage(to.params.id);
+      },
+    },
+    mounted() {
+      console.log(`mmmmmm-------${Math.random()}`);
+      this.setPage(this.$route.params.id);
     },
     methods: {
       ratingStar(item) {
@@ -197,6 +208,12 @@
       },
       goBack() {
         router.go(-1);
+      },
+      setPage(id) {
+        fetchMovieSubject(id).then((res) => {
+          console.log('res', res);
+          this.movie = res;
+        });
       },
     },
   };

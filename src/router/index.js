@@ -1,12 +1,12 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import Home from 'components/Home';
-import Movie from 'components/Movie';
-import MovieTab from 'components/Movie/Tab';
-import MovieSubject from 'components/Movie/Subject';
-import MovieSearch from 'components/Movie/Search';
-// import Test from 'components/Test';
+import Home from 'view/Home';
+import Movie from 'view/Movie';
+import MovieTab from 'view/Movie/Tab';
+import MovieSubject from 'view/Movie/Subject';
+import MovieSearch from 'view/Movie/Search';
+// import Test from 'view/Test';
 
 Vue.use(VueRouter);
 
