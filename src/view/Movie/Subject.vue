@@ -178,11 +178,21 @@
         'Resident Evil 6',
       ],
     };
-
+  console.log('data', data);
   export default {
     name: 'movieSubject',
     data() {
-      return { movie: data };
+      return {
+        movie: {
+          rating: {},
+          images: {},
+          countries: [],
+          genres: [],
+          casts: [],
+          directors: [],
+          aka: [],
+        },
+      };
     },
     watch: {
       $route(to) {
@@ -196,6 +206,13 @@
     },
     methods: {
       ratingStar(item) {
+        if (!item) {
+          return {
+            star: 0,
+            half: 0,
+            left: 0,
+          };
+        }
         const intNum = Math.round(item);
         const star = Math.floor(intNum / 2);
         const half = intNum % 2;

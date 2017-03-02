@@ -3,13 +3,13 @@
         <mu-paper class="demo-paper" :zDepth="1">
             <mu-appbar title="Title" class='search-bar'>
                 <mu-icon-button class='bar-icon' icon='arrow_back' slot="left" @click="gotoTab()"/>
-                <mu-text-field :underlineShow='false' class="bar-text" hintText="" />
+                <input v-model.trim="q" @keyup.enter="search" autofocus=true :underlineShow='false' class="bar-text" hintText="请输入关键字"/>
                 <mu-icon-button class='bar-icon' icon='close' slot="right" />
             </mu-appbar>
         </mu-paper>
 
         <div class="result">
-          <router-link :to="{name: 'MovieSubject', params: {id: 321}}" v-for="subject in subjects">
+          <router-link :to="{name: 'MovieSubject', params: {id: subject.id}}" v-for="subject in subjects">
             <mu-paper class="elem" :zDepth="1">
                 <div class="image" :style="'background-image: url('+subject.images.large+')'"></div>
                 <div class="text">
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-	import router from './../../router';
+	import { fetchMoviesQuery } from './../../store/movies/api';
 
 const data =
   {
@@ -182,10 +182,20 @@ const data =
 export default {
   name: 'movieSearch',
   data() {
-    return data;
+    return {
+      count: 20,
+      start: 0,
+      total: 2,
+      subjects: data.subjects,
+      stepNum: 1,
+      q: '',
+    };
   },
   mounted() {
     console.log(`mmmmmm-------${Math.random()}`);
+  },
+  watch: {
+    $route: 'getQuery',
   },
   methods: {
     ratingStar(item) {
@@ -200,7 +210,19 @@ export default {
       };
     },
     gotoTab() {
-      router.go(-1);
+      this.$router.go(-this.stepNum);
+    },
+    search() {
+      console.log('q', this.q);
+      if ((`${this.q}`).length === 0) {
+        return;
+      }
+      this.stepNum += 1;
+      console.log('step', this.stepNum);
+      this.$router.push({ name: 'MovieSearch', query: { q: this.q } });
+    },
+    getQuery() {
+      fetchMoviesQuery({ q: this.q }).then((res) => { this.subjects = res.subjects; });
     },
   },
 };
@@ -219,6 +241,13 @@ export default {
     height: 100%;
     position: relative;
     margin-bottom: 0px;
+    border: none;
+    -webkit-appearance: none;
+    &:focus{
+      border: none;
+      -webkit-appearance: none;
+      outline: none;
+    }
 }
 .bar-test{
     background: #ddd;
