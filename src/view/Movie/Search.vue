@@ -3,7 +3,7 @@
         <mu-paper class="demo-paper" :zDepth="1">
             <mu-appbar title="Title" class='search-bar'>
                 <mu-icon-button class='bar-icon' icon='arrow_back' slot="left" @click="gotoTab()"/>
-                <input v-model.trim="q" @keyup.enter="search" autofocus=true :underlineShow='false' class="bar-text" hintText="请输入关键字"/>
+                <input v-model.trim="q" :value="text" @keyup.enter="search" autofocus=true :underlineShow='false' class="bar-text" hintText="请输入关键字"/>
                 <mu-icon-button class='bar-icon' icon='close' slot="right" />
             </mu-appbar>
         </mu-paper>
@@ -38,147 +38,8 @@
 </template>
 
 <script>
-	import { fetchMoviesQuery } from './../../store/movies/api';
-	import * as type from './../../store/movies/type';
-
-const data =
-  {
-    count: 20,
-    start: 0,
-    total: 2,
-    subjects: [
-      {
-        rating: {
-          max: 10,
-          average: 7.9,
-          stars: '40',
-          min: 0,
-        },
-        genres: [
-          '剧情',
-          '喜剧',
-        ],
-        title: '有话好好说',
-        casts: [
-          {
-            alt: 'https://movie.douban.com/celebrity/1021999/',
-            avatars: {
-              small: 'http://img3.doubanio.com/img/celebrity/small/17197.jpg',
-              large: 'http://img3.doubanio.com/img/celebrity/large/17197.jpg',
-              medium: 'http://img3.doubanio.com/img/celebrity/medium/17197.jpg',
-            },
-            name: '姜文',
-            id: '1021999',
-          },
-          {
-            alt: 'https://movie.douban.com/celebrity/1038193/',
-            avatars: {
-              small: 'http://img3.doubanio.com/img/celebrity/small/1358596116.28.jpg',
-              large: 'http://img3.doubanio.com/img/celebrity/large/1358596116.28.jpg',
-              medium: 'http://img3.doubanio.com/img/celebrity/medium/1358596116.28.jpg',
-            },
-            name: '李保田',
-            id: '1038193',
-          },
-          {
-            alt: 'https://movie.douban.com/celebrity/1011112/',
-            avatars: {
-              small: 'http://img3.doubanio.com/img/celebrity/small/1421302138.86.jpg',
-              large: 'http://img3.doubanio.com/img/celebrity/large/1421302138.86.jpg',
-              medium: 'http://img3.doubanio.com/img/celebrity/medium/1421302138.86.jpg',
-            },
-            name: '瞿颖',
-            id: '1011112',
-          },
-        ],
-        collect_count: 98722,
-        original_title: '有话好好说',
-        subtype: 'movie',
-        directors: [
-          {
-            alt: 'https://movie.douban.com/celebrity/1054398/',
-            avatars: {
-              small: 'http://img3.doubanio.com/img/celebrity/small/568.jpg',
-              large: 'http://img3.doubanio.com/img/celebrity/large/568.jpg',
-              medium: 'http://img3.doubanio.com/img/celebrity/medium/568.jpg',
-            },
-            name: '张艺谋',
-            id: '1054398',
-          },
-        ],
-        year: '1997',
-        images: {
-          small: 'http://img7.doubanio.com/view/movie_poster_cover/ipst/public/p1194789230.jpg',
-          large: 'http://img7.doubanio.com/view/movie_poster_cover/lpst/public/p1194789230.jpg',
-          medium: 'http://img7.doubanio.com/view/movie_poster_cover/spst/public/p1194789230.jpg',
-        },
-        alt: 'https://movie.douban.com/subject/1296436/',
-        id: '1296436',
-      },
-      {
-        rating: {
-          max: 10,
-          average: 0,
-          stars: '00',
-          min: 0,
-        },
-        genres: [
-          '喜剧',
-          '爱情',
-          '短片',
-        ],
-        title: '没法好好说',
-        casts: [
-          {
-            alt: 'https://movie.douban.com/celebrity/1348115/',
-            avatars: {
-              small: 'http://img3.doubanio.com/img/celebrity/small/RaMVo8F0TRwcel_avatar_uploaded1424856687.16.jpg',
-              large: 'http://img3.doubanio.com/img/celebrity/large/RaMVo8F0TRwcel_avatar_uploaded1424856687.16.jpg',
-              medium: 'http://img3.doubanio.com/img/celebrity/medium/RaMVo8F0TRwcel_avatar_uploaded1424856687.16.jpg',
-            },
-            name: '任思扬',
-            id: '1348115',
-          },
-          {
-            alt: 'https://movie.douban.com/celebrity/1326628/',
-            avatars: {
-              small: 'http://img7.doubanio.com/img/celebrity/small/1449624604.41.jpg',
-              large: 'http://img7.doubanio.com/img/celebrity/large/1449624604.41.jpg',
-              medium: 'http://img7.doubanio.com/img/celebrity/medium/1449624604.41.jpg',
-            },
-            name: '应岱臻',
-            id: '1326628',
-          },
-          {
-            alt: null,
-            avatars: null,
-            name: '杜佳妮',
-            id: null,
-          },
-        ],
-        collect_count: 1,
-        original_title: '没法好好说',
-        subtype: 'movie',
-        directors: [
-          {
-            alt: null,
-            avatars: null,
-            name: '章雪岩',
-            id: null,
-          },
-        ],
-        year: '2012',
-        images: {
-          small: 'http://img7.doubanio.com/view/movie_poster_cover/ipst/public/p2435717275.jpg',
-          large: 'http://img7.doubanio.com/view/movie_poster_cover/lpst/public/p2435717275.jpg',
-          medium: 'http://img7.doubanio.com/view/movie_poster_cover/spst/public/p2435717275.jpg',
-        },
-        alt: 'https://movie.douban.com/subject/26984394/',
-        id: '26984394',
-      },
-    ],
-    title: '搜索 "有话好好说" 的结果',
-  };
+import { mapState } from 'vuex';
+import * as type from './../../store/movies/type';
 
 export default {
   name: 'movieSearch',
@@ -187,12 +48,16 @@ export default {
       count: 20,
       start: 0,
       total: 2,
-      subjects: data.subjects,
       q: '',
     };
   },
+  computed: mapState({
+    subjects: state => state.movie.movieQuery.subjects,
+    text: state => state.movie.movieQuery.q,
+  }),
   mounted() {
     console.log(`search mounted-------${Math.random()}`);
+    this.getQuery();
   },
   watch: {
     $route: 'getQuery',
@@ -211,7 +76,8 @@ export default {
     },
     gotoTab() {
       this.$router.go(-this.$store.state.movie.searchStep);
-      this.$store.state.movie.searchStep = 1;
+      this.$store.dispatch(type.UPDATE_MOVIE_SEARCH_STEP, 1);
+      this.$store.dispatch(type.CLEAR_MOVIES_QUERY);
     },
     search() {
       console.log('q', this.q);
@@ -224,7 +90,11 @@ export default {
       this.$router.push({ name: 'MovieSearch', query: { q: this.q } });
     },
     getQuery() {
-      fetchMoviesQuery({ q: this.q }).then((res) => { this.subjects = res.subjects; });
+      if (!this.$route.query.q) { return; }
+      if (this.$route.query.q !== this.$store.state.movie.movieQuery.q) {
+        console.log('dispatch...');
+        this.$store.dispatch(type.FETCH_MOVIES_QUERY, { q: this.$route.query.q });
+      }
     },
   },
 };

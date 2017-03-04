@@ -5,15 +5,15 @@
 				<mu-icon-button icon='menu' slot="left" />
 				<mu-icon-button icon='search' @click="gotoSearch()" slot='right' />
 			</mu-appbar>
-			<mu-tabs :value="activeTab()" @change="handleTabChange">
+			<mu-tabs :value="activeTab" @change="handleTabChange">
 				<mu-tab value="in_theaters" @active="handleActive" title="正在热映" />
 				<mu-tab value="coming_soon" @active="handleActive" title="即将上映" />
 			</mu-tabs>
 		</mu-paper>
-		<div v-if="activeTab() === 'in_theaters'">
+		<div v-if="activeTab === 'in_theaters'">
 			<Card tab-name='in_theaters'></Card>
 		</div>
-		<div v-if="activeTab() === 'coming_soon'">
+		<div v-if="activeTab === 'coming_soon'">
 			<Card tab-name='coming_soon'></Card>
 		</div>
 	</div>
@@ -32,6 +32,9 @@
 	  components: {
 	    Card,
 	  },
+	  computed: mapState({
+	    activeTab: state => state.movie.tab,
+	  }),
 	  methods: {
 	    handleTabChange(val) {
 	      this.$store.dispatch(type.CHANGE_MOVIES_TAB, val);
@@ -43,9 +46,6 @@
 	    gotoSearch() {
 	      this.$router.push({ name: 'MovieSearch' });
 	    },
-	    ...mapState({
-	      activeTab: state => state.movie.tab,
-	    }),
 	  },
 	};
 

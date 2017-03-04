@@ -29,7 +29,7 @@
 </template>
 <script>
 import { mapState } from 'vuex';
-import { fetchMovies } from './../../store/movies/api';
+import * as type from './../../store/movies/type';
 
 
 export default {
@@ -73,9 +73,7 @@ export default {
         !(this.$store.state.movie.movies[this.tabName].subjects &&
           this.$store.state.movie.movies[this.tabName].subjects.length > 0)
         ) {
-        fetchMovies(this.tabName).then((data) => {
-          this.$store.state.movie.movies[this.tabName].subjects = data.subjects;
-        });
+        this.$store.dispatch(type.FETCH_MOVIES, { type: this.tabName });
       }
     },
   },

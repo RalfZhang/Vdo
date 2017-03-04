@@ -9,12 +9,17 @@ const mutations = {
     state.movies[payload.type].total = state.movies[payload.type].subjects.length;
   },
   [type.FETCH_MOVIES_QUERY](state, payload) {
-    state.movieQuery.subjects = state.movieQuery.subjects.concat(payload.subjects);
-    state.movieQuery.total = state.movies[payload.type].subjects.length;
+    console.log('111');
+    state.movieQuery.subjects = payload.data.subjects;
+    console.log('222');
+    state.movieQuery.total = state.movieQuery.subjects.length;
+    console.log('333');
   },
   [type.CLEAR_MOVIES_QUERY](state) {
     state.movieQuery.total = 0;
+    console.log('444');
     state.movieQuery.subjects = [];
+    console.log('555');
   },
   [type.CHANGE_MOVIES_TAB](state, tab) {
     state.tab = tab;
@@ -33,8 +38,8 @@ const actions = {
             }));
   },
   [type.FETCH_MOVIES_QUERY](context, payload) {
-    api.fetchMoviesQuery(payload)
-            .then(data => context.commit(type.FETCH_MOVIES_QUERY, data));
+    api.fetchMoviesQuery({ q: payload.q })
+            .then(data => context.commit(type.FETCH_MOVIES_QUERY, { data, q: payload.q }));
   },
   [type.CLEAR_MOVIES_QUERY](context) {
     context.commit(type.CLEAR_MOVIES_QUERY);
@@ -65,6 +70,7 @@ export default {
       total: 0,
       subjects: [],
       describe: '',
+      q: '',
     },
     tab: 'in_theaters',
     searchStep: 1,
