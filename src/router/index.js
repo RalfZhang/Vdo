@@ -12,41 +12,78 @@ Vue.use(VueRouter);
 
 
 export default new VueRouter({
+  mode: 'history',
   routes: [
     {
       path: '/test',
       component: Test,
     },
+        /**
+         *嵌套路由写法
+        {
+          path: '/',
+          redirect: '/movie',
+          name: 'Home',
+          component: Home,
+          children: [
+            {
+              path: 'movie',
+              redirect: 'movie/home',
+              name: 'Movie',
+              component: Movie,
+              children: [
+                {
+                  path: 'home',
+                  name: 'MovieHome',
+                  component: MovieTab,
+                },
+                {
+                  path: 'subject/:id',
+                  name: 'MovieSubject',
+                  component: MovieSubject,
+                },
+                {
+                  path: 'search',
+                  name: 'MovieSearch',
+                  component: MovieSearch,
+                },
+              ],
+            },
+          ],
+        },
+        */
+
     {
       path: '/',
       redirect: '/movie',
       name: 'Home',
       component: Home,
-      children: [
-        {
-          path: 'movie',
-          redirect: 'movie/home',
-          name: 'Movie',
-          component: Movie,
-          children: [
-            {
-              path: 'home',
-              name: 'MovieHome',
-              component: MovieTab,
-            },
-            {
-              path: 'subject/:id',
-              name: 'MovieSubject',
-              component: MovieSubject,
-            },
-            {
-              path: 'search',
-              name: 'MovieSearch',
-              component: MovieSearch,
-            },
-          ],
-        },
-      ],
+    },
+    {
+      path: '/movie',
+      redirect: '/movie/home',
+      name: 'Movie',
+      component: Movie,
+    },
+    {
+      path: '/movie/home',
+      name: 'MovieHome',
+      component: MovieTab,
+    },
+    {
+      path: '/movie/subject/:id',
+      name: 'MovieSubject',
+      component: MovieSubject,
+    },
+    {
+      path: '/movie/search',
+      name: 'MovieSearch',
+      component: MovieSearch,
+    },
+        // 重定向
+    {
+      path: '/*',
+      redirect: '/',
     },
   ],
 });

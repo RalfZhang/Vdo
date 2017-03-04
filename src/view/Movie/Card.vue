@@ -28,18 +28,31 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex';
 import { fetchMovies } from './../../store/movies/api';
+
 
 export default {
   name: 'movieList',
   data() {
     return {
-      subjects: [],
     };
   },
   props: ['type'],
+  computed: mapState({
+    subjects(state) {
+      return state.movie.movies[this.type].subjects;
+    },
+  }),
   mounted() {
     this.fetchData();
+  },
+  beforeUpdate() {
+    console.log(`[beforeUpdate], type: ${this.type}`);
+    this.fetchData();
+  },
+  destroyed() {
+    console.log('[destroyed]');
   },
   methods: {
     ratingStar(item) {
@@ -53,10 +66,17 @@ export default {
         left,
       };
     },
+
     fetchData() {
-      fetchMovies(this.type).then((data) => {
-        this.subjects = data.subjects;
-      });
+      // doing
+      if (
+        !(this.$store.state.movie.movies[this.type].subjects &&
+          this.$store.state.movie.movies[this.type].subjects.length > 0)
+        ) {
+        fetchMovies(this.type).then((data) => {
+          this.$store.state.movie.movies[this.type].subjects = data.subjects;
+        });
+      }
     },
   },
 };
