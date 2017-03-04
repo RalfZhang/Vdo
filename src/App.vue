@@ -1,10 +1,8 @@
 <template>
-  <div>
     <div id="app">
       <router-view></router-view>
       <Copyright></Copyright>
     </div>
-  </div>
 </template>
 
 <script>
@@ -27,5 +25,9 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #212121;
+    background:#f5f5f5;
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 80px;
   }
   </style>

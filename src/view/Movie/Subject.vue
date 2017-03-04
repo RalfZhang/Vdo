@@ -196,12 +196,10 @@
     },
     watch: {
       $route(to) {
-        console.log(to);
         this.setPage(to.params.id);
       },
     },
     mounted() {
-      console.log(`mmmmmm-------${Math.random()}`);
       this.setPage(this.$route.params.id);
     },
     methods: {
@@ -228,7 +226,6 @@
       },
       setPage(id) {
         fetchMovieSubject(id).then((res) => {
-          console.log('res', res);
           this.movie = res;
         });
       },

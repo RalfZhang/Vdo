@@ -6,8 +6,8 @@
 				<mu-icon-button icon='search' @click="gotoSearch()" slot='right' />
 			</mu-appbar>
 			<mu-tabs :value="activeTab" @change="handleTabChange">
-				<mu-tab value="tab1" @active="handleActive" title="in_theaters" />
-				<mu-tab value="tab2" @active="handleActive" title="coming_soon" />
+				<mu-tab value="tab1" @active="handleActive" title="正在热映" />
+				<mu-tab value="tab2" @active="handleActive" title="即将上映" />
 			</mu-tabs>
 		</mu-paper>
 		<div v-if="activeTab === 'tab1'">
@@ -21,7 +21,6 @@
 
 <script>
 	import Card from './Card';
-	import router from './../../router';
 
 	export default {
 	  data() {
@@ -40,7 +39,7 @@
 	      console.log(`---------tab active-------------${val}`);
 	    },
 	    gotoSearch() {
-	      router.push({ name: 'MovieSearch' });
+	      this.$router.push({ name: 'MovieSearch' });
 	    },
 	  },
 	};

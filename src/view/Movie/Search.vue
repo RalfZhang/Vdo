@@ -192,7 +192,7 @@ export default {
     };
   },
   mounted() {
-    console.log(`mmmmmm-------${Math.random()}`);
+    console.log(`search mounted-------${Math.random()}`);
   },
   watch: {
     $route: 'getQuery',
@@ -261,6 +261,8 @@ export default {
         position: relative;
         box-sizing: border-box;
         margin: 10px 15px;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         height: 30%;
         overflow: hidden;
@@ -298,10 +300,14 @@ export default {
               }
             }
             .star{
+              display:-webkit-box;
+              display:-ms-flexbox;
               display:flex;
               padding-top: 2px;
               color: #ff6f00;
               .star-box{
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
                 margin-right: 4px;
                 .star-icon{

@@ -6,13 +6,17 @@ import Movie from 'view/Movie';
 import MovieTab from 'view/Movie/Tab';
 import MovieSubject from 'view/Movie/Subject';
 import MovieSearch from 'view/Movie/Search';
-// import Test from 'view/Test';
+import Test from 'view/Test';
 
 Vue.use(VueRouter);
 
 
 export default new VueRouter({
   routes: [
+    {
+      path: '/test',
+      component: Test,
+    },
     {
       path: '/',
       redirect: '/movie',

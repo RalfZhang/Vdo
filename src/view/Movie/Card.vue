@@ -55,7 +55,6 @@ export default {
     },
     fetchData() {
       fetchMovies(this.type).then((data) => {
-        console.log('data', data);
         this.subjects = data.subjects;
       });
     },
@@ -64,14 +63,14 @@ export default {
 </script>
 <style lang='css' scoped>
 .wrap{
-  padding: 10px;
+  padding: 6px;
 }
 .wrap>.paper-row{
   justify-content: flex-start;
   flex-flow: row wrap;
 }
 .paper-elem{
-  padding: 10px;
+  padding: 6px;
 }
 .paper-border{
   position: relative;
@@ -102,7 +101,7 @@ export default {
 }
 .paper-text>p{
   margin: 0;
-  padding: 0 4px;
+  padding: 0 6px;
   font-size: 14px;
   height: 20px;
   line-height: 20px;
