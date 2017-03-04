@@ -39,6 +39,7 @@
 
 <script>
 	import { fetchMoviesQuery } from './../../store/movies/api';
+	import * as type from './../../store/movies/type';
 
 const data =
   {
@@ -187,7 +188,6 @@ export default {
       start: 0,
       total: 2,
       subjects: data.subjects,
-      stepNum: 1,
       q: '',
     };
   },
@@ -210,15 +210,17 @@ export default {
       };
     },
     gotoTab() {
-      this.$router.go(-this.stepNum);
+      this.$router.go(-this.$store.state.movie.searchStep);
+      this.$store.state.movie.searchStep = 1;
     },
     search() {
       console.log('q', this.q);
       if ((`${this.q}`).length === 0) {
         return;
       }
-      this.stepNum += 1;
-      console.log('step', this.stepNum);
+      this.$store.dispatch(
+        type.UPDATE_MOVIE_SEARCH_STEP, this.$store.state.movie.searchStep + 1,
+        );
       this.$router.push({ name: 'MovieSearch', query: { q: this.q } });
     },
     getQuery() {

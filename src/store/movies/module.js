@@ -16,8 +16,11 @@ const mutations = {
     state.movieQuery.total = 0;
     state.movieQuery.subjects = [];
   },
-  [type.FETCH_MOVIES_TAB](state, tab) {
+  [type.CHANGE_MOVIES_TAB](state, tab) {
     state.tab = tab;
+  },
+  [type.UPDATE_MOVIE_SEARCH_STEP](state, searchStep) {
+    state.searchStep = searchStep;
   },
 };
 
@@ -36,8 +39,11 @@ const actions = {
   [type.CLEAR_MOVIES_QUERY](context) {
     context.commit(type.CLEAR_MOVIES_QUERY);
   },
-  [type.FETCH_MOVIES_TAB](context, tab) {
-    context.commit(type.FETCH_MOVIES_TAB, tab);
+  [type.CHANGE_MOVIES_TAB](context, tab) {
+    context.commit(type.CHANGE_MOVIES_TAB, tab);
+  },
+  [type.UPDATE_MOVIE_SEARCH_STEP](context, searchStep) {
+    context.commit(type.UPDATE_MOVIE_SEARCH_STEP, searchStep);
   },
 };
 
@@ -61,6 +67,7 @@ export default {
       describe: '',
     },
     tab: 'in_theaters',
+    searchStep: 1,
   },
   mutations,
   actions,

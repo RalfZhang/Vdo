@@ -11,10 +11,10 @@
 			</mu-tabs>
 		</mu-paper>
 		<div v-if="activeTab() === 'in_theaters'">
-			<Card type='in_theaters'></Card>
+			<Card tab-name='in_theaters'></Card>
 		</div>
 		<div v-if="activeTab() === 'coming_soon'">
-			<Card type='coming_soon'></Card>
+			<Card tab-name='coming_soon'></Card>
 		</div>
 	</div>
 </template>
@@ -34,7 +34,7 @@
 	  },
 	  methods: {
 	    handleTabChange(val) {
-	      this.$store.dispatch(type.FETCH_MOVIES_TAB, val);
+	      this.$store.dispatch(type.CHANGE_MOVIES_TAB, val);
 	      // this.activeTab = val;
 	    },
 	    handleActive(val) {

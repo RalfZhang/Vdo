@@ -38,17 +38,17 @@ export default {
     return {
     };
   },
-  props: ['type'],
+  props: ['tabName'],
   computed: mapState({
     subjects(state) {
-      return state.movie.movies[this.type].subjects;
+      return state.movie.movies[this.tabName].subjects;
     },
   }),
   mounted() {
     this.fetchData();
   },
   beforeUpdate() {
-    console.log(`[beforeUpdate], type: ${this.type}`);
+    console.log(`[beforeUpdate], tabName: ${this.tabName}`);
     this.fetchData();
   },
   destroyed() {
@@ -70,11 +70,11 @@ export default {
     fetchData() {
       // doing
       if (
-        !(this.$store.state.movie.movies[this.type].subjects &&
-          this.$store.state.movie.movies[this.type].subjects.length > 0)
+        !(this.$store.state.movie.movies[this.tabName].subjects &&
+          this.$store.state.movie.movies[this.tabName].subjects.length > 0)
         ) {
-        fetchMovies(this.type).then((data) => {
-          this.$store.state.movie.movies[this.type].subjects = data.subjects;
+        fetchMovies(this.tabName).then((data) => {
+          this.$store.state.movie.movies[this.tabName].subjects = data.subjects;
         });
       }
     },
