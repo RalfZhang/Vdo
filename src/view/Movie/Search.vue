@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id='search'>
         <mu-paper class="demo-paper" :zDepth="1">
             <mu-appbar title="Title" class='search-bar'>
                 <mu-icon-button class='bar-icon' icon='arrow_back' slot="left" @click="gotoTab()"/>
@@ -102,6 +102,12 @@ export default {
 
 
 <style lang="less" scoped>
+#search{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+}
 .search-bar{
     background: #fff;
     position: relative;

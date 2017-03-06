@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div id="tab">
 		<mu-paper :zDepth="2">
 			<mu-appbar title='豆瓣电影'>
 				<mu-icon-button icon='menu' slot="left" />
@@ -52,4 +52,11 @@
 </script>
 
 <style lang="css">
+#tab{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width:100%;
+	height: 100%;
+}
 </style>

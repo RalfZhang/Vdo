@@ -1,6 +1,8 @@
 <template>
     <div id="app">
-      <router-view></router-view>
+      <transition name="trans-opacity">
+        <router-view></router-view>
+      </transition>
       <Copyright></Copyright>
     </div>
 </template>
@@ -30,4 +32,10 @@ export default {
     min-height: 100%;
     padding-bottom: 80px;
   }
-  </style>
+  .trans-opacity-enter-active, .trans-opacity-leave-active{
+    transition: opacity 0.5s;
+  }
+  .trans-opacity-enter, .trans-opacity-leave-active{
+    opacity: 0;
+  }
+</style>
