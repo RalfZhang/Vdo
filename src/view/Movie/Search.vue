@@ -103,7 +103,6 @@ export default {
 
 <style lang="less" scoped>
 #search{
-  position: absolute;
   top: 0;
   width: 100%;
   left: 0;
