@@ -31,6 +31,7 @@ export default {
     position: relative;
     min-height: 100%;
     padding-bottom: 80px;
+    flex: 1;
   }
   .trans-opacity-enter-active, .trans-opacity-leave-active{
     transition: opacity 0.5s;
