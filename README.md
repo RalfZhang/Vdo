@@ -4,6 +4,8 @@
 
 项目网站 http://ralfz.com/douban/
 
+![image](/static/example.gif)
+
 
 # 快速使用  
 

@@ -2,7 +2,6 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import Home from 'view/Home';
-import Movie from 'view/Movie';
 import MovieTab from 'view/Movie/Tab';
 import MovieSubject from 'view/Movie/Subject';
 import MovieSearch from 'view/Movie/Search';
@@ -55,15 +54,9 @@ export default new VueRouter({
 
     {
       path: '/',
-      redirect: '/movie',
+      redirect: '/movie/home',
       name: 'Home',
       component: Home,
-    },
-    {
-      path: '/movie',
-      redirect: '/movie/home',
-      name: 'Movie',
-      component: Movie,
     },
     {
       path: '/movie/home',
