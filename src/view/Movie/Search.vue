@@ -47,7 +47,7 @@ export default {
     return {
       count: 20,
       start: 0,
-      total: 2,
+      total: 0,
       q: '',
     };
   },
