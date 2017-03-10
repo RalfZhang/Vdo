@@ -183,15 +183,15 @@ Warnings:
 1. 打开 `http://api.douban.com/v2/movie/in_theaters` 查看接口数据，留意此地址。    
 2. 在 `./config/index.js` 中的 `proxyTable` 配置代理：  
     ```js 
-    proxyTable: {
-        '/api': {
-        target: 'http://api.douban.com/v2',
-        changeOrigin: true,
-        pathRewrite: {
-            '^/api': ''
-        }
-        }
+proxyTable: {
+    '/api': {
+    target: 'http://api.douban.com/v2',
+    changeOrigin: true,
+    pathRewrite: {
+        '^/api': ''
     }
+    }
+}
     ```  
 3. 重新启动 `npm run dev`，打开 `localhost:8080/api/movie/in_theaters` 查看结果是否与直接请求豆瓣 API 相同。  
 4. 本应该使用了以下 API：  
