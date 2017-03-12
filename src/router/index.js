@@ -5,6 +5,7 @@ import Home from 'view/Home';
 import MovieTab from 'view/Movie/Tab';
 import MovieSubject from 'view/Movie/Subject';
 import MovieSearch from 'view/Movie/Search';
+import About from 'view/About/Index';
 import Test from 'view/Test';
 
 Vue.use(VueRouter);
@@ -72,6 +73,10 @@ export default new VueRouter({
       path: '/movie/search',
       name: 'MovieSearch',
       component: MovieSearch,
+    }, {
+      path: '/about',
+      name: 'About',
+      component: About,
     },
         // 重定向
     {
