@@ -271,7 +271,7 @@ axios.get('/v2/movie/in_theaters', { 'city': '广州' })
 1. 运行 `npm run build`，即可在生成的 `/dist` 文件夹下看到所有文件。  
 2. 将文件复制到你的服务器上某个目录（我的是`/var/www/Vdo/dist`），按照下一节配置 Nginx 即可
 
-提示：可以使用 `scp` 命令，例如 `scp -r dist -P 20 user@host:/target/location`
+提示：可以使用 `scp` 命令，例如 `scp -P 20 -r dist user@host:/target/location`
 
 
 ## 附：配置与开启 Nginx 
