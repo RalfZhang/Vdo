@@ -1,8 +1,6 @@
 <template>
     <div id="app">
-      <transition name="trans-opacity">
         <router-view></router-view>
-      </transition>
       <Copyright></Copyright>
     </div>
 </template>

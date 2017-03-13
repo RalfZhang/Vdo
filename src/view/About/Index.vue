@@ -21,10 +21,10 @@
                         <mu-sub-header>联系我</mu-sub-header>
                     <mu-paper>
 
-                        <mu-list-item title="ralfz.zhang@gmail.com">
+                        <mu-list-item :title="'\u0072\u0061\u006c\u0066\u007a\u002e\u007a\u0068\u0061\u006e\u0067\u0040\u0067\u006d\u0061\u0069\u006c\u002e\u0063\u006f\u006d'">
                             <mu-icon slot="left" value="email"/>
                         </mu-list-item>
-                        <mu-list-item title="@SBZKang" href="http://telegram.me/SBZKang">
+                        <mu-list-item :title="'@\u0053\u0042\u005a\u004b\u0061\u006e\u0067'" :href="'http://telegram.me/\u0053\u0042\u005a\u004b\u0061\u006e\u0067'">
                             <mu-icon class="icon-telegram" value=' ' slot="left">
                             </mu-icon>
                         </mu-list-item>
