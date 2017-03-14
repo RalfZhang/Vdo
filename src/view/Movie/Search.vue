@@ -115,13 +115,16 @@ export default {
     color:#757575;
 }
 .bar-text{
+    font-size: 16px;
     height: 100%;
     position: relative;
     margin-bottom: 0px;
     border: none;
+    -moz-appearance: none;
     -webkit-appearance: none;
     &:focus{
       border: none;
+      -moz-appearance: none;
       -webkit-appearance: none;
       outline: none;
     }

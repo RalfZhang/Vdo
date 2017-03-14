@@ -2,7 +2,7 @@
 
 一个使用 Vue.js 与 Material Design 重构 [豆瓣](http://www.douban.com) 的项目。  
 
-项目网站 http://ralfz.com/douban/
+项目网站 http://ralfz.com/Vdo/
 
 ![image](/static/example.gif)
 
@@ -271,7 +271,7 @@ axios.get('/v2/movie/in_theaters', { 'city': '广州' })
 1. 运行 `npm run build`，即可在生成的 `/dist` 文件夹下看到所有文件。  
 2. 将文件复制到你的服务器上某个目录（我的是`/var/www/Vdo/dist`），按照下一节配置 Nginx 即可
 
-提示：可以使用 `scp` 命令，例如 `scp -P 20 -r dist user@host:/target/location`
+提示：可以使用 `scp` 命令将本地文件拷贝至服务器，例如 `scp -P 20 -r dist user@host:/target/location`
 
 
 ## 附：配置与开启 Nginx 

@@ -80,8 +80,20 @@ export default new VueRouter({
     },
         // 重定向
     {
-      path: '/*',
-      redirect: '/',
+      path: '/Vdo',
+      redirect: '/movie/home',
+    },
+    {
+      path: '/vdo',
+      redirect: '/movie/home',
+    },
+    {
+      path: '/vue-douban',
+      redirect: '/movie/home',
+    },
+    {
+      path: '/douban',
+      redirect: '/movie/home',
     },
   ],
 });
