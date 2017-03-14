@@ -17,7 +17,7 @@
                   <mu-icon class='star-icon' value="star_border" v-for="n in ratingStar(subject.rating.average).left"/>
                 </span>
 
-                <span class='paper-rating'>{{subject.rating.average | fixNum}} <span>
+                <span class='paper-rating'>{{subject.rating.average | fixNum}} </span>
               </p>
             </div>
           </mu-paper>
