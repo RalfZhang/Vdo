@@ -2,7 +2,7 @@
 
 一个使用 Vue.js 与 Material Design 重构 [豆瓣](http://www.douban.com) 的项目。  
 
-项目网站 http://ralfz.com/Vdo/
+项目网站 http://vdo.ralfz.com/
 
 ![image](/static/example.gif)
 
@@ -299,6 +299,7 @@ axios.get('/v2/movie/in_theaters', { 'city': '广州' })
 - http://vuejs-templates.github.io/webpack/
 - https://github.com/mzabriskie/axios
 - https://museui.github.io/
+- https://vuejs-templates.github.io/webpack/
 
 # License  
 
