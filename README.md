@@ -2,6 +2,8 @@
 
 一个使用 Vue.js 与 Material Design 重构 [豆瓣](http://www.douban.com) 的项目。  
 
+test branch 
+
 项目网站 http://vdo.ralfz.com/
 
 ![image](/static/example.gif)
