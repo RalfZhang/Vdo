@@ -4,7 +4,7 @@
 
 项目网站 http://vdo.ralfz.com/
 
-![image](/static/example.gif)
+![GIF 图片](/static/example.gif)
 
 
 # 快速使用  
