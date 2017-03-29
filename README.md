@@ -276,10 +276,10 @@ axios.get('/v2/movie/in_theaters', { 'city': '广州' })
 
 ## 附：配置与开启 Nginx 
 注：以下以 CentOS 为例  
-1. 安装 Nginx：`yum install nginx`  
-2. 打开 `/etc/nginx/conf.d/default.conf`  
+1. 服务器安装 Nginx：`yum install nginx`  
+2. 服务器打开 `/etc/nginx/conf.d/default.conf`  
 3. 替换全文为本项目 `/doc/nginx.conf` 文件中的内容  
-4. 运行 `nginx`    
+4. 服务器运行 `nginx`    
 
 提示：   
 
