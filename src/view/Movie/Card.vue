@@ -24,11 +24,11 @@
     </mu-row>
   </div>
 </template>
+
 <script>
 import { mapState } from 'vuex';
 import Star from 'components/Star';
 import * as type from './../../store/movies/type';
-
 
 export default {
   name: 'movieList',
@@ -80,6 +80,7 @@ export default {
   },
 };
 </script>
+
 <style lang='css' scoped>
 .wrap{
   padding: 6px;

@@ -16,7 +16,6 @@ export default {
     Copyright,
   },
 };
-
 </script>
 
 <style lang="css">
