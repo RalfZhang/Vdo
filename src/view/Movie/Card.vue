@@ -1,7 +1,7 @@
 <template>
   <div class='wrap'>
     <mu-row class='paper-row'>
-      <mu-col class='paper-elem' width="33" tablet="25" desktop="20" v-for="subject in subjects">
+      <mu-col class='paper-elem' width="33" tablet="25" desktop="20" v-for="subject in subjects" :key="subject.id">
         <router-link :to="{name: 'MovieSubject', params:{id: subject.id}}">
           <mu-paper>
             <div class='paper-border'>
@@ -12,9 +12,7 @@
               <p> {{subject.title}} </p>
               <p class="star-box">
                 <span class="paper-star" v-if="subject.rating.average > 0">
-                  <mu-icon class='star-icon' value="star" v-for="n in ratingStar(subject.rating.average).star"/>
-                  <mu-icon class='star-icon' value="star_half" v-for="n in ratingStar(subject.rating.average).half"/>
-                  <mu-icon class='star-icon' value="star_border" v-for="n in ratingStar(subject.rating.average).left"/>
+                  <Star class="star" :rating='subject.rating.average'></Star>
                 </span>
 
                 <span class='paper-rating'>{{subject.rating.average | fixNum}} </span>
@@ -23,17 +21,20 @@
           </mu-paper>
         </router-link>
       </mu-col>
-
     </mu-row>
   </div>
 </template>
 <script>
 import { mapState } from 'vuex';
+import Star from 'components/Star';
 import * as type from './../../store/movies/type';
 
 
 export default {
   name: 'movieList',
+  components: {
+    Star,
+  },
   data() {
     return {
     };
@@ -115,14 +116,14 @@ export default {
   width: 100%;
 }
 .paper-text{
-  padding-top: 6px;
+  padding: 6px 0 2px 0;
 }
 .paper-text>p{
   margin: 0;
   padding: 0 6px;
   font-size: 14px;
-  height: 20px;
-  line-height: 20px;
+  height: 18px;
+  line-height: 16px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -133,14 +134,18 @@ export default {
   float: left;
 }
 .star-box{
+  display: flex;
   color: #ff6f00;
 }
+.star{
+  letter-spacing: -3px;
+}
 .paper-star{
-  margin-right: 4px;
-  font-size: 12px;
+  margin-right: 3px;
+  /*font-size: 12px;*/
 }
 .paper-rating{
   position: relative;
-  top: -2px;
+  /*top: -2px;*/
 }
 </style>

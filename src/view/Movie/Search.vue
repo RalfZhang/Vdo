@@ -9,7 +9,7 @@
         </mu-paper>
 
         <div class="result">
-          <router-link :to="{name: 'MovieSubject', params: {id: subject.id}}" v-for="subject in subjects">
+          <router-link :to="{name: 'MovieSubject', params: {id: subject.id}}" v-for="subject in subjects"  :key="subject.id">
             <mu-paper class="elem" :zDepth="1">
                 <div class="image" :style="'background-image: url('+subject.images.large+')'"></div>
                 <div class="text">
@@ -18,11 +18,14 @@
                       <span class="year">{{subject.year}}</span>
                     </div>
                     <div class="star">
+                    <!--
                       <span class='star-box' v-if="subject.rating.average > 0">
                         <mu-icon class='star-icon' :size='14' value="star" v-for="n in ratingStar(subject.rating.average).star"/>
                         <mu-icon class='star-icon' :size='14' value="star_half" v-for="n in ratingStar(subject.rating.average).half"/>
                         <mu-icon class='star-icon' :size='14' value="star_border" v-for="n in ratingStar(subject.rating.average).left"/>
                       </span>
+                      -->
+                      <Star class='star-box' :rating="subject.rating.average" v-if="subject.rating.average > 0"></Star>
                       <div class="star-num">{{subject.rating.average | fixNum}}</div>
                     </div>
                     <div class="genres">类型：{{subject.genres | arr2string}}</div>
@@ -39,10 +42,14 @@
 
 <script>
 import { mapState } from 'vuex';
+import Star from 'components/Star';
 import * as type from './../../store/movies/type';
 
 export default {
   name: 'movieSearch',
+  components: {
+    Star,
+  },
   data() {
     return {
       count: 20,
@@ -190,6 +197,7 @@ export default {
                 display: -ms-flexbox;
                 display: flex;
                 margin-right: 4px;
+                letter-spacing: -3px;
                 .star-icon{
                   margin-right: -3px;
                   padding: 2px 0;

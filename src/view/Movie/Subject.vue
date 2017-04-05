@@ -16,9 +16,12 @@
     </div>
 
     <div class="star">
+    <!--
       <mu-icon class='star-icon' :size='36' value="star" v-for="n in ratingStar(movie.rating.average).star" />
       <mu-icon class='star-icon' :size='36' value="star_half" v-for="n in ratingStar(movie.rating.average).half" />
       <mu-icon class='star-icon' :size='36' value="star_border" v-for="n in ratingStar(movie.rating.average).left" />
+      -->
+      <Star :rating="movie.rating.average"></Star>
     </div>
     <div class="info">
       <p class="info-content"><span class="info-title">原名</span><span class="info-text">{{movie.original_title}}</span></p>
@@ -36,7 +39,7 @@
     <div class="author">
       <p class="author-type">导演</p>
       <mu-row>
-        <mu-col class='author-elem' width="50" tablet="33" desktop="25" v-for="subject in movie.directors">
+        <mu-col class='author-elem' width="50" tablet="33" desktop="25" v-for="subject in movie.directors" :key="item.id">
           <mu-paper>
             <div class='author-wrap'>
               <div class="author-image">
@@ -46,13 +49,12 @@
             </div>
           </mu-paper>
         </mu-col>
-
       </mu-row>
     </div>
     <div class="author">
       <p class="author-type">主演</p>
       <mu-row>
-        <mu-col class='author-elem' width="50" tablet="33" desktop="25" v-for="subject in movie.casts">
+        <mu-col class='author-elem' width="50" tablet="33" desktop="25" v-for="subject in movie.casts" :key="item.id">
           <mu-paper>
             <div class='author-wrap'>
               <div class="author-image">
@@ -72,12 +74,15 @@
 
 
 <script>
-
+  import Star from 'components/Star';
   import router from './../../router';
   import { fetchMovieSubject } from './../../store/movies/api';
 
   export default {
     name: 'movieSubject',
+    components: {
+      Star,
+    },
     data() {
       return {
         movie: {
@@ -176,6 +181,9 @@
   display: flex;
   justify-content: center;
   background: #eee;
+  font-size: 42px;
+  color: #ff6f00;
+  padding: 8px 0;
 }
 .star-icon{
   margin: 20px 0;

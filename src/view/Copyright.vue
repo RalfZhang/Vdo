@@ -1,9 +1,9 @@
 <template>
-<div class='footer'>
-Powered By RalfZ
-<br>
-©2017
-</div>
+    <div class='footer'>
+        Powered By RalfZ
+        <br>
+        ©2017
+    </div>
 </template>
 <style lang="css" scoped>
     .footer{
