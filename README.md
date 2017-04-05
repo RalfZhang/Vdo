@@ -4,7 +4,7 @@
 
 项目网站 http://vdo.ralfz.com/
 
-![GIF 图片](/static/example.gif)
+![GIF 图片](/static/md/example.gif)
 
 
 # 快速使用  
@@ -48,7 +48,7 @@ npm run dev
 - 是否使用 Karma + Mocha 的单元测试
 - 是否使用 Nightwatch e2e 测试  
 
-![Image](/static/vue-init.png)
+![Image](/static/md/vue-init.png)
 
 
 
@@ -296,7 +296,6 @@ axios.get('/v2/movie/in_theaters', { 'city': '广州' })
 # 感谢&参考
 - https://github.com/superman66/vue2.x-douban
 - http://blog.guowenfh.com/2016/03/24/vue-webpack-01-base/
-- http://vuejs-templates.github.io/webpack/
 - https://github.com/mzabriskie/axios
 - https://museui.github.io/
 - https://vuejs-templates.github.io/webpack/
