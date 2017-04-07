@@ -6,9 +6,9 @@
 -->
 <template>
   <span class='star'>
-    <mu-icon class='star-icon' value="star" v-for="n in ratingObj.star" :key="n"/>
-    <mu-icon class='star-icon' value="star_half" v-for="n in ratingObj.half" :key="n"/>
-    <mu-icon class='star-icon' value="star_border" v-for="n in ratingObj.left" :key="n"/>
+    <mu-icon class='star-icon' value="star" v-for="n in ratingObj.star" :key="'star'+n"/>
+    <mu-icon class='star-icon' value="star_half" v-for="n in ratingObj.half" :key="'half'+n"/>
+    <mu-icon class='star-icon' value="star_border" v-for="n in ratingObj.left" :key="'left'+n"/>
   </span>
 </template>
 
@@ -21,6 +21,7 @@
         const star = Math.floor(intNum / 2);
         const half = intNum % 2;
         const left = 5 - star - half;
+        console.log(this.rating, star, half, left);
         return {
           star,
           half,

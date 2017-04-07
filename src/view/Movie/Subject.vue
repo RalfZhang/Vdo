@@ -39,7 +39,7 @@
     <div class="author">
       <p class="author-type">导演</p>
       <mu-row>
-        <mu-col class='author-elem' width="50" tablet="33" desktop="25" v-for="subject in movie.directors" :key="item.id">
+        <mu-col class='author-elem' width="50" tablet="33" desktop="25" v-for="subject in movie.directors" :key="subject.id">
           <mu-paper>
             <div class='author-wrap'>
               <div class="author-image">
@@ -54,7 +54,7 @@
     <div class="author">
       <p class="author-type">主演</p>
       <mu-row>
-        <mu-col class='author-elem' width="50" tablet="33" desktop="25" v-for="subject in movie.casts" :key="item.id">
+        <mu-col class='author-elem' width="50" tablet="33" desktop="25" v-for="subject in movie.casts" :key="subject.id">
           <mu-paper>
             <div class='author-wrap'>
               <div class="author-image">
@@ -86,7 +86,10 @@
     data() {
       return {
         movie: {
-          rating: {},
+          title: '',
+          rating: {
+            average: 0,
+          },
           images: {},
           countries: [],
           genres: [],
