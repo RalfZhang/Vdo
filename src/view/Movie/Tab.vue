@@ -1,12 +1,12 @@
 <template>
 	<div id="tab">    
-	  <mu-drawer class='drawer' :open="open" :docked="docked" @close="toggle()">
+	  <mu-drawer class='drawer' :open="open"  @close="toggle()">
 		 <!-- <img src='../../image/title.png' style="width: 100%;"/>-->
 			<div class="drawer-pic" style="background:#474a4f; padding: 70px 0;text-align:center; color:#fff;">
 				<div class="title" style="font-size: 32px;">微豆 Vdo</div>
 				<div class="description" style="font-size: 16px;color:#e0e0e0;">一个移动端豆瓣 Web 应用</div>
 			</div>
-      <mu-list value="movie"  @itemClick="docked ? '' : toggle()" @change="page">
+      <mu-list value="movie"  @itemClick="toggle()" @change="page">
         <mu-list-item value="movie" title="电影">
 				      <mu-icon slot="left" value="movie"/>
         </mu-list-item>
@@ -22,21 +22,23 @@
         </mu-list-item>
       </mu-list>
     </mu-drawer>
-		<mu-paper :zDepth="2">
-			<mu-appbar title='电影'>
-				<mu-icon-button icon='menu' slot="left"  @click="toggle(true)"/>
-				<mu-icon-button icon='search' @click="gotoSearch()" slot='right' />
-			</mu-appbar>
-			<mu-tabs :value="activeTab" @change="handleTabChange">
-				<mu-tab value="in_theaters" @active="handleActive" title="正在热映" />
-				<mu-tab value="coming_soon" @active="handleActive" title="即将上映" />
-			</mu-tabs>
-		</mu-paper>
-		<div v-if="activeTab === 'in_theaters'">
-			<Card tab-name='in_theaters'></Card>
-		</div>
-		<div v-if="activeTab === 'coming_soon'">
-			<Card tab-name='coming_soon'></Card>
+		<div class="body-content">
+			<mu-paper :zDepth="2">
+				<mu-appbar title='电影'>
+					<mu-icon-button icon='menu' slot="left"  @click="toggle()"/>
+					<mu-icon-button icon='search' @click="gotoSearch()" slot='right' />
+				</mu-appbar>
+				<mu-tabs :value="activeTab" @change="handleTabChange">
+					<mu-tab value="in_theaters" @active="handleActive" title="正在热映" />
+					<mu-tab value="coming_soon" @active="handleActive" title="即将上映" />
+				</mu-tabs>
+			</mu-paper>
+			<div v-if="activeTab === 'in_theaters'">
+				<Card tab-name='in_theaters'></Card>
+			</div>
+			<div v-if="activeTab === 'coming_soon'">
+				<Card tab-name='coming_soon'></Card>
+			</div>
 		</div>
 
 
@@ -52,8 +54,8 @@
 	  data() {
     return {
 	      dialog: false,
-	      open: false,
-	      docked: true,
+	      open: true,
+	      docked: false,
 	      value: 'moive',
 	    };
 	  },
@@ -79,7 +81,7 @@
 	      console.log('flag', flag, this);
 	
 	      this.open = !this.open;
-	      this.docked = !flag;
+	      // this.docked = !flag;
 	    },
 	    handleTabChange(val) {
 	      this.$store.dispatch(type.CHANGE_MOVIES_TAB, val);
@@ -104,5 +106,8 @@
 .drawer{
 	    color: #212121;
     background:#f5f5f5;
+}
+.body-content{
+	padding-left: 256px;
 }
 </style>
