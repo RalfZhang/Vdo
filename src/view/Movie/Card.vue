@@ -1,7 +1,7 @@
 <template>
   <div class='wrap'>
     <mu-row class='paper-row'>
-      <mu-col class='paper-elem' width="33" tablet="25" desktop="20" v-for="subject in subjects" :key="subject.id">
+      <mu-col class='paper-elem' width="33" tablet="25" desktop="25" v-for="subject in subjects" :key="subject.id">
         <router-link :to="{name: 'MovieSubject', params:{id: subject.id}}">
           <mu-paper>
             <div class='paper-border'>
@@ -81,9 +81,11 @@ export default {
 };
 </script>
 
-<style lang='css' scoped>
+<style lang='less' scoped>
 .wrap{
   padding: 6px;
+  max-width: 800px;
+  margin: auto;
 }
 .wrap>.paper-row{
   justify-content: flex-start;
