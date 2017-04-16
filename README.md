@@ -1,6 +1,6 @@
 # 微豆 Vdo
 
-一个使用 Vue.js 与 Material Design 重构 [豆瓣](http://www.douban.com) 的项目。  
+一个使用 Vue.js 与 Material Design 重构豆瓣的项目。  
 
 项目网站 http://vdo.ralfz.com/
 
