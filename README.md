@@ -145,9 +145,7 @@ Warnings:
 
 解决问题 2  
 - 你可以选择继续在 `.eslintrc.js` 文件中添加关闭句末分号判定的规则。
-- 或者，也可以把 `package.json` 文件中的 `script` 下的 `lint` 命令改为   
-```    "lint": "eslint --fix *.js *.vue src/* test/unit/specs/* test/e2e/specs/*"```  
- 同时，将 `/build/webpack.base.conf.js` 里 `formatter: require('eslint-friendly-formatter')` 后添加 `, fix: true` 即自动修复。（值得注意的是，自动修复不能解决所有问题，有时也不甚完美，可以多试几次体会下 fix 的效果。）
+- 或者，也可以把 `package.json` 文件中的 `script` 下的 `lint` 命令改为 `"lint": "eslint --fix *.js *.vue src/* test/unit/specs/* test/e2e/specs/*"` 。同时，将 `/build/webpack.base.conf.js` 里 `formatter: require('eslint-friendly-formatter')` 后添加 `, fix: true` 即自动修复。（值得注意的是，自动修复不能解决所有问题，有时也不甚完美，可以多试几次体会下 fix 的效果。）
 
 做完更改后，重新运行 `npm run dev` 即可看到无问题报告，并且 `console` 语句后已经自动加上了分号。
 
