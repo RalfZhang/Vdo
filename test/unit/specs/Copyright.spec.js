@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Copyright from 'src/view/Copyright';
 
-describe('Card.vue', () => {
+describe('Copyright.vue', () => {
   it('should render correct contents', () => {
     const Constructor = Vue.extend(Copyright);
     const vm = new Constructor().$mount();
