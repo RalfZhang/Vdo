@@ -9,5 +9,9 @@ testsContext.keys().forEach(testsContext);
 // require all src files except main.js for coverage.
 // you can also change this to match only the subset of files that
 // you want coverage for.
-const srcContext = require.context('src', true, /^\.\/(?!main(\.js)?$)/);
+
+// 默认 src 除了 main.js
+// const srcContext = require.context('src', true, /^\.\/(?!main(\.js)?$)/);
+// 只测试 vue 文件
+const srcContext = require.context('src', true, /\.vue$/);
 srcContext.keys().forEach(srcContext);
