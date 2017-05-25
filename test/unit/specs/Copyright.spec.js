@@ -9,3 +9,12 @@ describe('Copyright.vue', () => {
       .to.include('RalfZ');
   });
 });
+
+// describe('Copyright.vue', () => {
+//   it('should render correct contents', () => {
+//     const Constructor = Vue.extend(Copyright);
+//     const vm = new Constructor().$mount();
+//     expect(vm.$el.querySelector('.footer').textContent)
+//       .to.include('RalfZ');
+//   });
+// });
