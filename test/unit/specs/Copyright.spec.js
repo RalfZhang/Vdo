@@ -6,7 +6,7 @@ describe('Copyright.vue', () => {
     const Constructor = Vue.extend(Copyright);
     const vm = new Constructor().$mount();
     expect(vm.$el.querySelector('.footer').textContent)
-      .to.include('RalfZ');
+      .to.toEqual('RalfZ');
   });
 });
 
