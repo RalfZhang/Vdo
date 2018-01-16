@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "node"
+  - "8"
+install:
+  - "yarn"
+script:
+  - "yarn run build"
+deploy:
+  - "cp"
