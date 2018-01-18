@@ -12,4 +12,4 @@ install:
 script:
 - yarn run build
 after_success:
-- scp dist ralfz@vultr.ralfz.com:/var/www/vdo
+- scp -r dist ralfz@vultr.ralfz.com:/var/www/vdo
