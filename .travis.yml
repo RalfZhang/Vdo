@@ -11,5 +11,5 @@ install:
 - yarn
 script:
 - yarn run build
-deploy:
+after_success:
 - scp dist ralfz@vultr.ralfz.com:/var/www/vdo
