@@ -1,5 +1,7 @@
 # 微豆 Vdo
 
+[![Build Status](https://travis-ci.org/RalfZhang/Vdo.svg?branch=master)](https://travis-ci.org/RalfZhang/Vdo)
+
 一个使用 Vue.js 与 Material Design 重构 [豆瓣](http://www.douban.com) 的项目。  
 
 项目网站 http://vdo.ralfz.com/
