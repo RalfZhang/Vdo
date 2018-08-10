@@ -4,7 +4,7 @@
             <mu-appbar title="Title" class='search-bar'>
                 <mu-icon-button class='bar-icon' icon='arrow_back' slot="left" @click="gotoTab()"/>
                 <input v-model.trim="q" @keyup.enter="search" autofocus=true :underlineShow='false' class="bar-text" hintText="请输入关键字"/>
-                <mu-icon-button class='bar-icon' icon='close' slot="right" />
+                <mu-icon-button class='bar-icon' icon='close' slot="right" @click="clearText()"/>
             </mu-appbar>
         </mu-paper>
 
@@ -89,6 +89,9 @@ export default {
       this.$store.dispatch(type.UPDATE_MOVIE_SEARCH_STEP, 1);
       this.$store.dispatch(type.CLEAR_MOVIES_QUERY);
     },
+    clearText() {
+      this.q = '';
+    },
     search() {
       console.log('q', this.q);
       if ((`${this.q}`).length === 0) {
@@ -126,7 +129,7 @@ export default {
 }
 .bar-text{
     font-size: 16px;
-    height: 100%;
+    line-height: 30px;
     position: relative;
     margin-bottom: 0px;
     border: none;
