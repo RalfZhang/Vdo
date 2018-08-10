@@ -3,7 +3,7 @@
         <mu-paper class="demo-paper" :zDepth="1">
             <mu-appbar title="Title" class='search-bar'>
                 <mu-icon-button class='bar-icon' icon='arrow_back' slot="left" @click="gotoTab()"/>
-                <input v-model.trim="q" :value="text" @keyup.enter="search" autofocus=true :underlineShow='false' class="bar-text" hintText="请输入关键字"/>
+                <input v-model.trim="q" @keyup.enter="search" autofocus=true :underlineShow='false' class="bar-text" hintText="请输入关键字"/>
                 <mu-icon-button class='bar-icon' icon='close' slot="right" />
             </mu-appbar>
         </mu-paper>
@@ -62,6 +62,9 @@ export default {
     subjects: state => state.movie.movieQuery.subjects,
     text: state => state.movie.movieQuery.q,
   }),
+  created() {
+    this.q = this.text;
+  },
   mounted() {
     console.log(`search mounted-------${Math.random()}`);
     this.getQuery();
